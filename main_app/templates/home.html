@@ -1,0 +1,8 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Home</h1>
+<form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="file" name="doc" multiple />
+  <input type="submit" value="Upload" />
+</form>
+{% endblock content %}
