@@ -62,8 +62,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://chat-docs-next-vert.vercel.app",
     "http://localhost:3000",
 ]
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
 
 ROOT_URLCONF = "chatdocs.urls"
 
