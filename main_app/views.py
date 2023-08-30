@@ -38,10 +38,10 @@ def upload(request):
 def chat(request):
     if request.method == "POST":
         question = request.POST["question"]
-        response = conversation({"question": question})["chat_history"]
-        chat_history = {"messages": []}
-        for message in reversed(response):
-            chat_history["messages"].append(message.content)
-
-        return JsonResponse(chat_history)
+        response = conversation({"query": question})
+        # chat_history = {"messages": []}
+        # for message in reversed(response):
+        #     chat_history["messages"].append(message.content)
+        # print(response)
+        return JsonResponse(response)
     return JsonResponse({"data": "not a get route"})

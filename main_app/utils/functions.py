@@ -4,7 +4,7 @@ from langchain.embeddings import HuggingFaceInstructEmbeddings
 from langchain.vectorstores import FAISS, Pinecone
 from langchain.llms import HuggingFaceHub, OpenAI
 from langchain.memory import ConversationBufferMemory
-from langchain.chains import ConversationalRetrievalChain
+from langchain.chains import ConversationalRetrievalChain, RetrievalQA
 import pinecone
 import environ
 
@@ -51,9 +51,12 @@ def get_conversation_chain(vector_store):
         repo_id="google/flan-t5-base",
         model_kwargs={"temperature": 0.5, "max_length": 512},
     )
-    memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
-    conversation_chain = ConversationalRetrievalChain.from_llm(
-        llm=llm, retriever=vector_store.as_retriever(), memory=memory
+    # memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+    # conversation_chain = ConversationalRetrievalChain.from_llm(
+    #     llm=llm, retriever=vector_store.as_retriever(), memory=memory
+    # )
+    conversation_chain = RetrievalQA.from_chain_type(
+        llm=llm, chain_type="stuff", retriever=vector_store.as_retriever()
     )
-    # print(conversation_chain)
+
     return conversation_chain
