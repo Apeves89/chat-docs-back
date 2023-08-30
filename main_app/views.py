@@ -12,6 +12,12 @@ from django.http import JsonResponse
 conversation = None
 
 
+def home(request):
+    return HttpResponse(
+        "Use the following link to interact with the ChatDocs API https://chat-docs-next-vert.vercel.app/"
+    )
+
+
 @csrf_exempt
 def upload(request):
     global conversation
