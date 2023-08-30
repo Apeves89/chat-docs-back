@@ -28,7 +28,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["localhost", "chat-docs.onrender.com"]
 
@@ -62,8 +62,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://chat-docs-next-vert.vercel.app",
     "http://localhost:3000",
 ]
-# CSRF_COOKIE_SECURE = True
-# SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 ROOT_URLCONF = "chatdocs.urls"
 
